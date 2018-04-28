@@ -14,7 +14,11 @@ class FilmmakersManager extends _TableManager{
 		
 	}
 	public function exist($id){
-		parent::exist($id);
+		// recherche par id
+		if (is_int($id)){
+			return parent::exist($id);
+		}
+		// recherche par nom		
 		if (is_string($id)){
 			$connect = $this->dbConnect; 
 				$response = $connect->prepare("SELECT * FROM " . $this->table . " WHERE realisateur = :realisateur");
@@ -23,5 +27,7 @@ class FilmmakersManager extends _TableManager{
 				return $response->fetch(PDO::FETCH_ASSOC);
 		}
 	}
-	
+	public function update($filmmaker){
+		
+	}
 }
