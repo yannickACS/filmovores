@@ -28,6 +28,18 @@ class FilmmakersManager extends _TableManager{
 		}
 	}
 	public function update($filmmaker){
-		
+		if ($this->exist((int)$filmmaker->getId())){
+			$realisateur = $filmmaker->getName();
+			$id = $filmmaker->getId();
+			$connect = $this->dbConnect;
+			$response = $connect->prepare("UPDATE " . $this->table . " SET realisateur = :realisateur WHERE id=:id");
+			$response->bindParam(':id', $id, PDO::PARAM_STR);
+			$response->bindParam(':realisateur', $realisateur, PDO::PARAM_STR);
+			$response->execute();
+			
+			return $this->read((int)$filmmaker->getId());
+		} else {
+			echo '<br>le réalisateur n\' existe pas, update impossible<br>';
+		}
 	}
 }

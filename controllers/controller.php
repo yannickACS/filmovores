@@ -4,8 +4,8 @@ require_once('../models/dbConnect.php');
 spl_autoload_register('chargerClasse'); // On enregistre la fonction en autoload pour qu'elle soit appelée dès qu'on instanciera une classe non déclarée.
 $actorsManager = new ActorsManager($GLOBALS['bdd'], 'acteurs');
 $filmmakerManager = new FilmmakersManager($GLOBALS['bdd'], 'realisateurs');
-$filmmaker = $filmmakerManager->read(3);
-$filmmaker = new Filmmaker($filmmaker['id'], $filmmaker['realisateur']);
+// $filmmaker = $filmmakerManager->read(3);
+// $filmmaker = new Filmmaker($filmmaker['id'], $filmmaker['realisateur']);
 // var_dump($filmmaker);
 // tests Actors et ActorsManager
 // $actor = $actorsManager->read(1);
@@ -20,4 +20,15 @@ $newActor = $actorsManager->update($actor);
 $actor = new Actor($newActor['id'], $newActor['nom_acteur']);
 echo "Id acteur : " . $actor->getId() . "<br>";
 echo "Nom acteur : " . $actor->getName() . "<br>";
+// test filmmaker filmmakerManager
+$newFilmmaker = $filmmakerManager->setNew("Khemaja Yannick");
+$filmmaker = new Filmmaker($newFilmmaker['id'], $newFilmmaker['realisateur']);
+echo "Id réalisateur : " . $filmmaker->getId() . "<br>";
+echo "Nom réalisateur : " . $filmmaker->getName() . "<br>";
+$filmmaker->setName("Yannick Khemaja");
+echo "Après setName, nom réalisateur = " . $filmmaker->getName() . "<br>";
+$newFilmmaker = $filmmakerManager->update($filmmaker);
+$actor = new Actor($newFilmmaker['id'], $newFilmmaker['realisateur']);
+echo "Id réalisateur : " . $filmmaker->getId() . "<br>";
+echo "Nom réalisateur : " . $filmmaker->getName() . "<br>";
 
