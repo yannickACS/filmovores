@@ -14,7 +14,7 @@ abstract  class _CategoriesFilms {
 	}
 	public function setName($name){
 		if (isset($name)){
-			$id = (string)$id;
+			$name = (string)$name;
 			$this->name = $name;
 		}
 	}
