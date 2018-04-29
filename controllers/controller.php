@@ -1,34 +1,65 @@
 <?php
+define('BR', '<br \>');
 require_once('../models/chargerClasse.php');
 require_once('../models/dbConnect.php');
 spl_autoload_register('chargerClasse'); // On enregistre la fonction en autoload pour qu'elle soit appelée dès qu'on instanciera une classe non déclarée.
 $actorsManager = new ActorsManager($GLOBALS['bdd'], 'acteurs');
 $filmmakerManager = new FilmmakersManager($GLOBALS['bdd'], 'realisateurs');
+$genreManager = new GenresManager($GLOBALS['bdd'], 'genres');
 // $filmmaker = $filmmakerManager->read(3);
 // $filmmaker = new Filmmaker($filmmaker['id'], $filmmaker['realisateur']);
 // var_dump($filmmaker);
 // tests Actors et ActorsManager
 // $actor = $actorsManager->read(1);
-$newActor = $actorsManager->setNew("YoYi YoYa");
-$actor = new Actor($newActor['id'], $newActor['nom_acteur']);
-echo "Id acteur : " . $actor->getId() . "<br>";
-echo "Nom acteur : " . $actor->getName() . "<br>";
-// var_dump($actor);
-$actor->setName("York Yorki");
-echo "Après setName, nom acteur = " . $actor->getName() . "<br>";
-$newActor = $actorsManager->update($actor);
-$actor = new Actor($newActor['id'], $newActor['nom_acteur']);
-echo "Id acteur : " . $actor->getId() . "<br>";
-echo "Nom acteur : " . $actor->getName() . "<br>";
-// test filmmaker filmmakerManager
-$newFilmmaker = $filmmakerManager->setNew("Khemaja Yannick");
-$filmmaker = new Filmmaker($newFilmmaker['id'], $newFilmmaker['realisateur']);
-echo "Id réalisateur : " . $filmmaker->getId() . "<br>";
-echo "Nom réalisateur : " . $filmmaker->getName() . "<br>";
-$filmmaker->setName("Yannick Khemaja");
-echo "Après setName, nom réalisateur = " . $filmmaker->getName() . "<br>";
-$newFilmmaker = $filmmakerManager->update($filmmaker);
-$actor = new Actor($newFilmmaker['id'], $newFilmmaker['realisateur']);
-echo "Id réalisateur : " . $filmmaker->getId() . "<br>";
-echo "Nom réalisateur : " . $filmmaker->getName() . "<br>";
-
+// $newActor = $actorsManager->setNew("dimanche YoYa");
+// $actor = new Actor($newActor['id'], $newActor['nom_acteur']);
+// echo "Id acteur : " . $actor->getId() . "<br>";
+// echo "Nom acteur : " . $actor->getName() . "<br>";
+// // var_dump($actor);
+// $actor->setName("Dimance Yorki");
+// echo "Après setName, nom acteur = " . $actor->getName() . "<br>";
+// $newActor = $actorsManager->update($actor);
+// $actor = new Actor($newActor['id'], $newActor['nom_acteur']);
+// echo "Id acteur : " . $actor->getId() . "<br>";
+// echo "Nom acteur : " . $actor->getName() . "<br>";
+// // test filmmaker filmmakerManager
+// $newFilmmaker = $filmmakerManager->setNew("dimanche Yannick");
+// $filmmaker = new Filmmaker($newFilmmaker['id'], $newFilmmaker['realisateur']);
+// echo "Id réalisateur : " . $filmmaker->getId() . "<br>";
+// echo "Nom réalisateur : " . $filmmaker->getName() . "<br>";
+// $filmmaker->setName("Dimanchhe Khemaja");
+// echo "Après setName, nom réalisateur = " . $filmmaker->getName() . "<br>";
+// $newFilmmaker = $filmmakerManager->update($filmmaker);
+// $actor = new Actor($newFilmmaker['id'], $newFilmmaker['realisateur']);
+// echo "Id réalisateur : " . $filmmaker->getId() . "<br>";
+// echo "Nom réalisateur : " . $filmmaker->getName() . "<br>";
+// // test genre et genreManager
+// $newGenre = $genreManager->setNew("Domani");
+// $genre = new Genre($newGenre['id'], $newGenre['genre']);
+// echo "Id genre : " . $genre->getId() . "<br>";
+// echo "Nom genre : " . $genre->getName() . "<br>";
+// $genre->setName("Manido");
+// echo "Après setName, nom genre = " . $genre->getName() . "<br>";
+// echo "Après setName, id = " . $genre->getId() . "<br>";
+// $newGenre = $genreManager->update($genre);
+// $genre = new Genre($newGenre['id'], $newGenre['genre']);
+// echo "Id genre : " . $genre->getId() . "<br>";
+// echo "Nom genre : " . $genre->getName() . "<br>";
+// $acteur = $actorsManager->read(1);
+// echo $acteur['nom'] . BR;
+// echo $acteur['date_ajout'] . BR;
+// $acteur = new Actor($acteur['id'], $acteur['nom']);
+// echo $acteur->getId() . BR;
+// echo $acteur->getName() . BR;
+// $realisateur = $filmmakerManager->read(1);
+// echo $realisateur['nom'] . BR;
+// echo $realisateur['date_ajout'] . BR;
+// $realisateur = new Actor($realisateur['id'], $realisateur['nom']);
+// echo $realisateur->getId() . BR;
+// echo $realisateur->getName() . BR;
+$genre = $genreManager->read(1);
+echo $genre['nom'] . BR;
+echo $genre['date_ajout'] . BR;
+$genre = new Actor($genre['id'], $genre['nom']);
+echo $genre->getId() . BR;
+echo $genre->getName() . BR;

@@ -1,5 +1,6 @@
 <?php
 class actorsManager extends _TableManager{
+	use ManagerConstructor;
 	public function setNew($nom){
 		if (!$this->exist($nom)){
 			$connect = $this->dbConnect;

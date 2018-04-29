@@ -1,6 +1,6 @@
 <?php
 try {
-    $bdd = new PDO('mysql:host=localhost;dbname=films_caty', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=filmovores', 'root', '');
 }
 catch(Exception $e) {
     die('Erreur:'.$e->getMessage());

@@ -2,10 +2,6 @@
 abstract  class _CategoriesFilms {
 	protected $id;
 	protected $name;
-	public function __construct($id, $name){
-		$this->id = $id;
-		$this->name = $name;
-	}
 	public function setId($id){
 		if (isset($id)){
 			$id = (string)$id;

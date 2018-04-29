@@ -2,10 +2,7 @@
 abstract class _TableManager{
 	protected $dbConnect;
 	protected $table;
-	public function __construct($pdo, $table){
-		$this->dbConnect = $pdo;
-		$this->table = $table;
-	}
+	
 	protected function setNew($objet){
 
 	}
